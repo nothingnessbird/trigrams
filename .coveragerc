@@ -1,0 +1,5 @@
+[run]
+include = YOUR PYTHON FILES YOU WROTE
+
+[report]
+show_missing = True
