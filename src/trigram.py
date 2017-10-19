@@ -35,7 +35,7 @@ def get_first_key_words(path, dict):
 
 
 def trigrammer(n, path):
-    """Produce a dictionary of trigrams from tex, use to build new string."""
+    """Produce a dictionary of trigrams from text, use to build new string."""
     book_dictionary = create_dict(path)
     key_words = get_first_key_words(path, book_dictionary)
     generated_text = ''
