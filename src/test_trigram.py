@@ -1,26 +1,17 @@
 """Tests for trigrams, a program that generates text based on a source text."""
 
-import pytest
-
-BOOKS = [
-    # (100, 'communist_manifesto.txt', True),
-    # (500, 'victorian_sexy_fic.txt', True),
-    # (1000, 'communist_manifesto.txt', True),
-    # (-1, 'communist_manifesto.txt', False),
-    # (0, 'communist_manifesto.txt', False),
-    # ('hello', 'communist_manifesto', False),
-    (100, 'testpoe.txt', True)
+DICT_KEYS = [
+    ('there blazed', ['forth', 'the']),
+    ('kept down', ['by', 'in']),
+    ('now got', ['up', 'some']),
+    ('A singular', ['change']),
+    ('at first', ['had'])
 ]
 
 
-@pytest.mark.parametrize('n, path, result', BOOKS)
-def test_trigrammer(n, path, result):
+def test_create_dict(n=50, path='testpoe.txt'):
     """Test that trigrammer outputs actual trigram text."""
-    from trigram import trigrammer
-    result = trigrammer(n, path)
-    result_tester = result.split()
-    for word in result_tester[2:]:
-        if result_tester[word] in trigram_dict[result_tester[word - 2] + ' ' + result_tester[word - 1]]:
-            assert True
-        else:
-            assert False
+    from trigram import create_dict
+    trigram_dict = create_dict(50, 'testpoe.txt')
+    for key in DICT_KEYS:
+        assert key in trigram_dict and trigram_dict[key] == DICT_KEYS[key]
