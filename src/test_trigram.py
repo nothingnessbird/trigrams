@@ -3,17 +3,19 @@
 import pytest
 
 BOOKS = [
-    (100, 'communist_manifesto.txt', True),
-    (500, 'victorian_sexy_fic.txt', True),
-    (1000, 'communist_manifesto.txt', True),
-    (-1, 'communist_manifesto.txt', False),
-    (0, 'communist_manifesto.txt', False),
-    ('hello', 'communist_manifesto', False),
+    # (100, 'communist_manifesto.txt', True),
+    # (500, 'victorian_sexy_fic.txt', True),
+    # (1000, 'communist_manifesto.txt', True),
+    # (-1, 'communist_manifesto.txt', False),
+    # (0, 'communist_manifesto.txt', False),
+    # ('hello', 'communist_manifesto', False),
+    (100, 'testpoe.txt', True)
 ]
 
 
 @pytest.mark.parametrize('n, path, result', BOOKS)
 def test_trigrammer(n, path, result):
+    """Test that trigrammer outputs actual trigram text."""
     from trigram import trigrammer
     result = trigrammer(n, path)
     result_tester = result.split()
@@ -22,4 +24,3 @@ def test_trigrammer(n, path, result):
             assert True
         else:
             assert False
-

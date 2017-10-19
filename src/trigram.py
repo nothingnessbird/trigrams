@@ -43,4 +43,5 @@ def trigrammer(n, path):
         added_text = book_dictionary[key_words][random.randint(0, len(book_dictionary[key_words]) - 1)]
         generated_text += added_text + ' '
         key_words = key_words.split(' ')[1] + ' ' + added_text
+    print(generated_text)
     return generated_text
