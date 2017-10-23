@@ -18,6 +18,7 @@ def test_create_dict(path='testpoe.txt'):
 
 
 def test_get_first_key_words(path='testpoe.txt'):
+    """Test if keyword generator produces keywords from dictionary."""
     from trigram import get_first_key_words
     from trigram import create_dict
     created_dict = create_dict(path)
@@ -26,5 +27,13 @@ def test_get_first_key_words(path='testpoe.txt'):
 
 
 def test_trigrammer(n=50, path='testpoe.txt'):
+    """Test if trigrammer produces valid text."""
     from trigram import trigrammer
-
+    from trigram import create_dict
+    test_dict = create_dict(path)
+    text = trigrammer(n, path)
+    text = text.split()
+    for word_idx in range(len(text) - 2):
+        test_key = '{} {}'.format(text[word_idx], text[word_idx + 1])
+        test_val = text[word_idx + 2]
+        assert test_val in test_dict[test_key]
