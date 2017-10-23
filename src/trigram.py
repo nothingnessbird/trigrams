@@ -37,7 +37,7 @@ def get_first_key_words(path, created_dict):
     return first_words
 
 
-def trigrammer(n, path):
+def main(path, n):
     """Produce a dictionary of trigrams from text, use to build new string."""
     book_dictionary = create_dict(path)
     key_words = get_first_key_words(path, book_dictionary)
@@ -49,9 +49,14 @@ def trigrammer(n, path):
             key_words = key_words.split(' ')[1] + ' ' + added_text
         except KeyError:
             continue
-    print(generated_text)
     return generated_text
 
 
 if __name__ == '__main__':
-    
+    print(sys.argv[0])
+    print(__doc__)
+    user_arg1 = sys.argv[1]
+    user_arg2 = sys.argv[2]
+    print('Text: %s' % user_arg1)
+    print('Amount: %s' % user_arg2)
+    print(main(user_arg1, int(user_arg2)))

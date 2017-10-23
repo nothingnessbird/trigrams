@@ -10,7 +10,7 @@ DICT_KEYS = {
 
 
 def test_create_dict(path='testpoe.txt'):
-    """Test that trigrammer outputs actual trigram text."""
+    """Test that main outputs actual trigram text."""
     from trigram import create_dict
     trigram_dict = create_dict('testpoe.txt')
     for key in DICT_KEYS:
@@ -26,12 +26,12 @@ def test_get_first_key_words(path='testpoe.txt'):
     assert first_key in created_dict
 
 
-def test_trigrammer(n=50, path='testpoe.txt'):
-    """Test if trigrammer produces valid text."""
-    from trigram import trigrammer
+def test_main(path='testpoe.txt', n=50):
+    """Test if main produces valid text."""
+    from trigram import main
     from trigram import create_dict
     test_dict = create_dict(path)
-    text = trigrammer(n, path)
+    text = main(n, path)
     text = text.split()
     for word_idx in range(len(text) - 2):
         test_key = '{} {}'.format(text[word_idx], text[word_idx + 1])

@@ -1,5 +1,0 @@
-[run]
-include = trigram.py
-
-[report]
-show_missing = True
